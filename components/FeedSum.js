@@ -39,8 +39,6 @@ function FeedSum() {
                               <td className="py-2 px-1 text-sm font-medium whitespace-nowrap dark:text-white">{item.username}</td>
                               <td className="py-2 px-1 text-sm font-medium whitespace-nowrap dark:text-white">{item.climb}</td>
                               <td className="py-2 px-1 text-sm font-medium whitespace-nowrap dark:text-white">{item.climbGrade}</td>
-                              <td className="py-2 px-1 text-sm font-medium whitespace-nowrap dark:text-white">{item.climbLocation}</td>
-
                             </tr>
                           ))}
                     </tbody>
