@@ -4,6 +4,7 @@ module.exports = {
       './pages/**/*.{js,ts,jsx,tsx}',
       './components/**/*.{js,ts,jsx,tsx}',
       './app/**/*.{js,ts,jsx,tsx}',
+      './src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js',
   ],
   theme: {
     extend: {
@@ -27,7 +28,6 @@ module.exports = {
         'green1' : "#E8E8E8",
         'green2': "#BBBFCA",
         "green3": "#495464",
-        
       },
     },
   },
@@ -35,5 +35,6 @@ module.exports = {
     require('@tailwindcss/forms'),
     require('tailwind-scrollbar'),
     require('tailwind-scrollbar-hide'),
+    require('tw-elements/dist/plugin')
   ],
 }

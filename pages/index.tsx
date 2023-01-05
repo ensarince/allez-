@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 import Header from "../components/Header"
 import Feed from "../components/Feed"
 import Modal from "../components/Modal"
-
+import 'tw-elements';
 
 export default function Home() {
   return (
