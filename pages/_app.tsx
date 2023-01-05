@@ -8,9 +8,13 @@ import {
   useRecoilState,
   useRecoilValue,
 } from 'recoil';
+import { useEffect } from 'react';
 
 
 function MyApp({ Component, pageProps }: AppProps) {
+
+
+
   return (
     <SessionProvider session={pageProps.session}>
         <RecoilRoot>

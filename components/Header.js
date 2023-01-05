@@ -46,7 +46,7 @@ function Header() {
     //getting post data
     useEffect(() => {
       db.collection('users')
-        .doc(session.user.email)
+        .doc(session?.user.email)
         .collection('climbs')
         .get()
         .then((querySnapshot) => {
@@ -212,7 +212,7 @@ function Header() {
                     </div>
                  </div>
                 </div>
-
+                {session && 
                 <div class="flex justify-center">
                 <div>
                     <div class="dropdown relative">
@@ -241,6 +241,7 @@ function Header() {
                     </div>
                  </div>
                 </div>
+                }
 
                 <div class="flex justify-center">
                 <div>

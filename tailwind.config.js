@@ -4,7 +4,7 @@ module.exports = {
       './pages/**/*.{js,ts,jsx,tsx}',
       './components/**/*.{js,ts,jsx,tsx}',
       './app/**/*.{js,ts,jsx,tsx}',
-      './**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js',
+      './node_modules/tw-elements/dist/js/**/*.js',
   ],
   theme: {
     extend: {
