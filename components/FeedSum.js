@@ -27,7 +27,7 @@ function FeedSum() {
   }, [db])   
   
   return (
-    <div className='bg-green1 rounded-sm my-4 '>
+    <div className='bg-green1 rounded-sm my-4 p-2'>
       <div className='flex space-x-2 justify-center'>
         <h1 className='text-md lg:text-xl text-green3'>Latest Ascents</h1>
         <FilterIcon  className="h-8 cursor-pointer"/>

@@ -24,6 +24,8 @@ function Header() {
     const [posts, setPosts] = useState([])
     const [myPosts, setMyPosts] = useState([])
 
+    const [open, setOpen] = useRecoilState(modalState)
+
     //getting post data
     useEffect(() => {
       db.collection('climbs')

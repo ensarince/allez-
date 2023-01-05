@@ -6,8 +6,6 @@ import Image from 'next/image'
 export default function SignIn({ providers }) {
   return (
     <>
-    <Header />
-
     <div className="flex flex-col bg-green1 items-center justify-center min-h-screen py-2 px-14 text-center">
             <Image src="/logo.png" width="200" height="120" objectFit='contain' className="mb-10"/>
             <h1 className='text-2xl mb-10 font-semibold text-black1  '>Add your ascents.</h1>
