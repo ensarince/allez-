@@ -7,6 +7,7 @@ import Feed from "../components/Feed"
 import Modal from "../components/Modal"
 import Script from 'next/script'
 import dynamic from "next/dynamic"
+import React from 'react'
 
 export default function Home() {
 
