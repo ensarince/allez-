@@ -9,11 +9,10 @@ import {
   useRecoilValue,
 } from 'recoil';
 import { useEffect } from 'react';
+import React from 'react';
 
 
 function MyApp({ Component, pageProps }: AppProps) {
-
-
 
   return (
     <SessionProvider session={pageProps.session}>
