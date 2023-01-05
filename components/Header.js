@@ -62,7 +62,7 @@ function Header() {
             climbedAs: doc.data().climbedAsRef,
           })))
         }); 
-    }, [db])  
+    }, [])  
 
   return (
     <div className='sticky top-0 z-50 shadow-sm bg-green3 text-white'>
@@ -198,7 +198,7 @@ function Header() {
                     </button>
                         <ul class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none bg-gray-800"
                             aria-labelledby="dropdownMenuButton2">
-                            {posts.map(item => (
+                            {posts?.map(item => (
                             <>
                                 <li>
                                     <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 active:bg-blue-600"
@@ -227,7 +227,7 @@ function Header() {
                     </button>
                         <ul class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none bg-gray-800"
                             aria-labelledby="dropdownMenuButton2">
-                            {myPosts.map(item => (
+                            {myPosts?.map(item => (
                             <>
                                 <li>
                                     <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 active:bg-blue-600"
@@ -243,6 +243,7 @@ function Header() {
                 </div>
                 }
 
+                {session &&
                 <div class="flex justify-center">
                 <div>
                     <div class="dropdown relative">
@@ -271,6 +272,7 @@ function Header() {
                     </div>
                  </div>
                 </div>
+                }
             <DotsHorizontalIcon className="py-2 mt-1 h-8 w-8 active:text-gray-300 active:scale-105 transition-all duration-150 ease-out" aria-hidden="true" />
         </div>
 
