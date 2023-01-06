@@ -184,13 +184,12 @@ function Header() {
         </div>
 
         {/* Bottom, mobile navigation */}
-
         <div className='justify-evenly flex md:hidden h-fit bg-green3 p-2 text-md text-white1 font-bold'>            
             <div class="flex justify-center">
                 <div>
                     <div class="dropdown relative">
                     <button
-                        class="dropdown-toggle p-2 text-white font-bold text-sm rounded hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center"
+                        class="dropdown-toggle p-2 text-white font-bold text-sm rounded hover:shadow-lg focus:bg-green2 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green3 active:shadow-lg active:text-green3 transition duration-150 ease-in-out flex items-center"
                         type="button"
                         id="dropdownMenuButton2"
                         data-bs-toggle="dropdown"
@@ -219,7 +218,7 @@ function Header() {
                 <div>
                     <div class="dropdown relative">
                     <button
-                        class="dropdown-toggle p-2 text-white font-bold text-sm rounded hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center"
+                        class="dropdown-toggle p-2 text-white font-bold text-sm rounded hover:shadow-lg focus:bg-green2 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green3 active:shadow-lg active:text-green3 transition duration-150 ease-in-out flex items-center"
                         type="button"
                         id="dropdownMenuButton2"
                         data-bs-toggle="dropdown"
@@ -250,7 +249,7 @@ function Header() {
                 <div>
                     <div class="dropdown relative">
                     <button
-                        class="dropdown-toggle p-2 text-white font-bold text-sm rounded hover:shadow-lg focus:bg-gray-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center"
+                        class="dropdown-toggle p-2 text-white font-bold text-sm rounded hover:shadow-lg focus:bg-green2 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green3 active:shadow-lg active:text-green3 transition duration-150 ease-in-out flex items-center"
                         type="button"
                         id="dropdownMenuButton2"
                         data-bs-toggle="dropdown"

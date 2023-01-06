@@ -1,25 +1,56 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {BookmarkIcon, ChatIcon, DotsHorizontalIcon, HeartIcon, EmojiHappyIcon, MenuIcon, PaperAirplaneIcon} from "@heroicons/react/outline"
 import {HeartIcon as HeartIconFilled} from "@heroicons/react/solid"
 import {useSession, signIn, signOut} from "next-auth/react"
 import { addDoc, collection, deleteDoc, doc, serverTimestamp, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
-//import Moment from 'react-moment';
+import Moment from 'react-moment';
 
 
 function Post({ id, username, userImg, img, climb, climbGrade, climbLocation, climbNote, climbedAs }) {
 
     const { data: session } = useSession();
 
-    //comment
-/*     useEffect(() => {
+    const [comment, setComment] = useState("")
+    const [comments, setComments] = useState([])
 
 
-    }, [])
-     */
+           //getting comment data
+           useEffect(() => {
+            db.collection('climbs')
+              .doc(id)
+              .collection('comments')
+              .orderBy("timestamp", "desc")
+              .get()
+              .then((querySnapshot) => {
+                setComments(querySnapshot.docs.map(doc => ({
+                  id: doc.id,
+                  comment: doc.data().comment,
+                  username: doc.data().username,
+                  userImg: doc.data().userImg,
+                  timestamp: doc.data().timestamp,
+                })))
+              }); 
+          }, [db, id])    
+
+          
+    //comment adding functionality
+    const sendComment = async(e) => {
+      e.preventDefault();
+
+      const commentToSend = comment;
+      setComment('');
+
+      await addDoc(collection(db, 'climbs', id, 'comments'), {
+        comment: commentToSend,
+        username: session.user.name,
+        userImg: session.user.image,
+        timestamp: serverTimestamp(),
+      })
+    }
 
   return (
-    <div className='bg-green1 shadow-inner my-7 '>
+    <div className='bg-green1 my-7 '>
     {/* Header */}
     <div className='flex items-center p-5'>
       <img src={userImg || "https://media.tenor.com/5aF7np_zPEgAAAAM/pepe-why-pepe-the-frog.gif"} className="rounded-full h-12 w-12 object-contain border p-1 mr-3" alt="" />
@@ -56,10 +87,9 @@ function Post({ id, username, userImg, img, climb, climbGrade, climbLocation, cl
       {climbNote}
     </p>
 
-
-    {/* commments */}
-    {/* {comments.length > 0 && (
-      <div className='ml-10 h-20 overflow-y-scroll scrollbar-thumb black scrollbar-thin'>
+      {/* Comments section */}
+    {comments.length > 0 && (
+      <div className='ml-10 h-20 overflow-y-scroll scrollbar-none'>
         {comments.map(comment => (
           <div className="flex items-center space-x-2 mb-3" key={comment.id}>
             <img src={comment.userImg} className="h-7 rounded-full" alt=""/>
@@ -71,14 +101,14 @@ function Post({ id, username, userImg, img, climb, climbGrade, climbLocation, cl
           </div>
         ))}
       </div>
-    )} */}
+    )}
 
 
     {session && (
       <form action="" className='flex items-center p-4' >
         <EmojiHappyIcon className='h-7' />
-        <input /* onChange={(e) => setComment(e.target.value) } */ type="text" /* value={comment} */ placeholder='Add a comment...' className='bg-green1 border-none flex-1 focus:ring-0 outline-none'/>
-        <button type='submit' /* disabled={!comment.trim()} onClick={sendComment} */ className='font-semibold text-blue-400'>Post</button>
+        <input onChange={(e) => setComment(e.target.value) } type="text" value={comment} placeholder='Add a comment...' className='bg-green1 border-none flex-1 focus:ring-0 outline-none'/>
+        <button type='submit' disabled={!comment.trim()} onClick={sendComment} className='font-semibold text-green3 cursor-pointer'>Post</button>
       </form>
       )
     }

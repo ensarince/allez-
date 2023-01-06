@@ -7,9 +7,18 @@ function Posts() {
 
   const [posts, setPosts] = useState([])
 
+    //loading state for smooth upload
+    const [loading, setLoading] = useState(false)
+
+      //for loading animation
+  setTimeout(() => {
+    setLoading(false);
+  }, 2000);
+
   //getting post data
   useEffect(() => {
     db.collection('climbs')
+      .orderBy("timestamp", "desc")
       .get()
       .then((querySnapshot) => {
         setPosts(querySnapshot.docs.map(doc => ({

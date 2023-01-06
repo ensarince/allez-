@@ -2,7 +2,7 @@ import React, { Fragment, useRef, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { modalState } from '../atoms/modalAtom'
 import { Dialog, Transition  } from '@headlessui/react'
-import { CameraIcon } from '@heroicons/react/outline'
+import { CameraIcon, XIcon} from '@heroicons/react/outline'
 import {db, storage} from "../firebase"
 import { addDoc, collection, serverTimestamp, doc, updateDoc } from 'firebase/firestore'
 import { useSession } from 'next-auth/react'
@@ -125,9 +125,11 @@ function Modal() {
                     <div className='inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform
                         transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6'>
                         <div>
-                            {
-                                selectedFile ? (
-                                    <img src={selectedFile} onClick={() => setSelectedFile} alt="" />
+                        {selectedFile ? (
+                                    <div className='relative'>
+                                      <XIcon onClick={() => setSelectedFile(null)} className='h-7 z-10 cursor-pointer opacity-70 hover:opacity-100 hover:scale-125 transition-all duration-150 ease-out' />
+                                      <img src={selectedFile} onClick={() => setSelectedFile} alt="" />
+                                    </div>
                                 ) : (
 
                             <div onClick={() => filePickerRef.current.click()}

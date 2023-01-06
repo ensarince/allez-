@@ -13,6 +13,7 @@ function MyLatestAscents() {
     db.collection('users')
       .doc(session.user.email)
       .collection('climbs')
+      .orderBy("timestamp", "desc")
       .get()
       .then((querySnapshot) => {
         setMyPosts(querySnapshot.docs.map(doc => ({
