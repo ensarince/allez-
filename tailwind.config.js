@@ -29,6 +29,10 @@ module.exports = {
         'green2': "#BBBFCA",
         "green3": "#495464",
       },
+
+      width: {
+        '15': '300px',
+      },
     },
   },
   plugins: [

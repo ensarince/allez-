@@ -2,33 +2,28 @@ import { UserIcon } from '@heroicons/react/outline'
 import React, {useState, useEffect} from 'react'
 import {useSession, signIn, signOut} from "next-auth/react"
 import { db } from '../firebase'
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 
 function MyLatestAscents() {
 
   const [myPosts, setMyPosts] = useState([])
   const { data: session } = useSession();
 
-  //getting post data
-  useEffect(() => {
-    db.collection('users')
-      .doc(session.user.email)
-      .collection('climbs')
-      .orderBy("timestamp", "desc")
-      .get()
-      .then((querySnapshot) => {
-        setMyPosts(querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          username: doc.data().username,
-          userImg: doc.data().profileImg,
-          img: doc.data().image,
-          climbGrade: doc.data().climbGradeRef,
-          climbLocation: doc.data().climbLocation,
-          climbNote: doc.data().climbNoteRef,
-          climb: doc.data().climbRef,
-          climbedAs: doc.data().climbedAsRef,
-        })))
-      }); 
-  }, [db])   
+        //getting my post data
+        useEffect(() => {
+          try {                
+              const unsubscribe = onSnapshot(query(collection(db, 'users', session?.user?.email, 'climbs'), orderBy('timestamp', 'desc')), 
+                snapshot => {
+                  setMyPosts(snapshot.docs)
+                });
+                return unsubscribe
+          } catch (error) {
+              console.log("My data fetch error ->> " , error)
+          }
+      }, [db])   
+
+
+  
 
   return (
     <div className='bg-green1 rounded-sm p-5 my-4'>
@@ -37,17 +32,17 @@ function MyLatestAscents() {
         <UserIcon  className="h-8 cursor-pointer"/>
       </div>
 
-      <div className='p-2'>
-        <div className='flex space-x-3 items-center flex-col'>
-              {myPosts?.map(item => (
-                <tr className='flex space-x-10' key={item.id}>
-                  <p key={item.id} className='text-sm text-green3'>{item.climb}</p>
-                  <p key={item.id} className='text-sm text-green3'>{item.climbGrade}</p>
-                  <p key={item.id} className='text-sm text-green3'>{item.climbLocation}</p>
-                </tr>
-              ))}
-          </div>
-      </div>
+      <table className="divide-gray-200 table-fixed text-left w-15 ">
+                  <tbody className="bg-white dark:bg-green1">
+                          {myPosts?.map((item)=> (
+                            <tr key={item.id} className='hover:bg-gray-500 dark:hover:bg-gray-400 cursor-pointer transition-all duration-150 ease-out'>
+                              <td className="py-2 px-1 w-12 text-md truncate font-normal whitespace-nowrap dark:text-green3">{item.data().climbRef}</td>
+                              <td className="py-2 px-1 w-12 text-md font-normal whitespace-nowrap dark:text-green3">{item.data().climbGradeRef}</td>
+                              <td className="py-2 px-1 w-12 text-md truncate font-normal whitespace-nowrap dark:text-green3">{item.data().climbLocation}</td>
+                            </tr>
+                          ))} 
+                    </tbody>
+            </table>
     </div>
   )
 }

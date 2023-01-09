@@ -29,7 +29,7 @@ const { data: session } = useSession();
   return (
     <main className='grid grid-cols-1 md:grid-cols-1 md:max-w-3xl xl:grid-cols-4 xl:max-w-7xl mx-auto'>
 
-        <section className='hidden xl:inline-grid md:col-span-1'>
+        <section className='hidden xl:inline-grid md:col-span-1 overflow-hidden'>
             <div className='fixed top-20 h-full w-fit'>
                 <FeedSum/> 
             </div>

@@ -159,35 +159,35 @@ function Modal() {
                                              <select className='border-none focus:ring-0 w-full text-center scrollbar scrollbar-none' 
                                                 ref={climbGradeRef}>
                                                 <option disabled selected className='text-sm text-green3' value="5b">Please select a grade...</option>
-                                                <option className='text-sm text-green3' value="five_a">five_a</option>
-                                                <option className='text-sm text-green3' value="five_aplus">five_aplus</option>
-                                                <option className='text-sm text-green3' value="five_b">five_b</option>
-                                                <option className='text-sm text-green3' value="five_bplus">five_bplus</option>
-                                                <option className='text-sm text-green3' value="five_c">five_c</option>
-                                                <option className='text-sm text-green3' value="five_cplus">five_cplus</option>
-                                                <option className='text-sm text-green3' value="six_a">six_a</option>
-                                                <option className='text-sm text-green3' value="six_aplus">six_aplus</option>
-                                                <option className='text-sm text-green3' value="six_b">six_b</option>
-                                                <option className='text-sm text-green3' value="six_bplus">six_bplus</option>                
-                                                <option className='text-sm text-green3' value="six_c">six_c</option>
-                                                <option className='text-sm text-green3' value="six_cplus">six_cplus</option>
-                                                <option className='text-sm text-green3' value="seven_a">seven_a</option>                
-                                                <option className='text-sm text-green3' value="seven_aplus">seven_aplus</option>
-                                                <option className='text-sm text-green3' value="seven_b">seven_b</option>
-                                                <option className='text-sm text-green3' value="seven_bplus">seven_bplus</option>                
-                                                <option className='text-sm text-green3' value="seven_c">seven_c</option>
-                                                <option className='text-sm text-green3' value="seven_cplus">seven_cplus</option>
-                                                <option className='text-sm text-green3' value="eight_a">eight_a</option>               
-                                                <option className='text-sm text-green3' value="eight_aplus">eight_aplus</option>
-                                                <option className='text-sm text-green3' value="eight_b">eight_b</option>
-                                                <option className='text-sm text-green3' value="eight_bplus">eight_bplus</option>
-                                                <option className='text-sm text-green3' value="eight_c">eight_c</option>
-                                                <option className='text-sm text-green3' value="eight_cplus">eight_cplus</option>                
-                                                <option className='text-sm text-green3' value="nine_a">nine_a</option>
-                                                <option className='text-sm text-green3' value="nine_aplus">nine_aplus</option>
-                                                <option className='text-sm text-green3' value="nine_b">nine_b</option>               
-                                                <option className='text-sm text-green3' value="nine_bplus">nine_bplus</option>
-                                                <option className='text-sm text-green3' value="nice_c">nice_c</option>
+                                                <option className='text-sm text-green3' value="5a">5a</option>
+                                                <option className='text-sm text-green3' value="5a+">5a+</option>
+                                                <option className='text-sm text-green3' value="5b">5b</option>
+                                                <option className='text-sm text-green3' value="5b+">5b+</option>
+                                                <option className='text-sm text-green3' value="5c">5c</option>
+                                                <option className='text-sm text-green3' value="5c+">5c+</option>
+                                                <option className='text-sm text-green3' value="6a">6a</option>
+                                                <option className='text-sm text-green3' value="6a+">6a+</option>
+                                                <option className='text-sm text-green3' value="6b">6b</option>
+                                                <option className='text-sm text-green3' value="6b+">6b+</option>                
+                                                <option className='text-sm text-green3' value="6c">6c</option>
+                                                <option className='text-sm text-green3' value="6c+">6c+</option>
+                                                <option className='text-sm text-green3' value="7a">7a</option>                
+                                                <option className='text-sm text-green3' value="7a+">7a+</option>
+                                                <option className='text-sm text-green3' value="7b">7b</option>
+                                                <option className='text-sm text-green3' value="7b+">7b+</option>                
+                                                <option className='text-sm text-green3' value="7c">7c</option>
+                                                <option className='text-sm text-green3' value="7c+">7c+</option>
+                                                <option className='text-sm text-green3' value="8a">8a</option>               
+                                                <option className='text-sm text-green3' value="8a+">8a+</option>
+                                                <option className='text-sm text-green3' value="8b">8b</option>
+                                                <option className='text-sm text-green3' value="8b+">8b+</option>
+                                                <option className='text-sm text-green3' value="8c">8c</option>
+                                                <option className='text-sm text-green3' value="8c+">8c+</option>                
+                                                <option className='text-sm text-green3' value="9a">9a</option>
+                                                <option className='text-sm text-green3' value="9a+">9a+</option>
+                                                <option className='text-sm text-green3' value="9b">9b</option>               
+                                                <option className='text-sm text-green3' value="9b+">9b+</option>
+                                                <option className='text-sm text-green3' value="9c">9c</option>
                                             </select>
                                             <select className='border-none focus:ring-0 w-full text-center scrollbar scrollbar-none' 
                                                 ref={climbedAsRef} placeholder='Grade'>

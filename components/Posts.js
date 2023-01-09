@@ -7,32 +7,13 @@ function Posts() {
 
   const [posts, setPosts] = useState([])
 
-    //loading state for smooth upload
-    const [loading, setLoading] = useState(false)
-
-      //for loading animation
-  setTimeout(() => {
-    setLoading(false);
-  }, 2000);
-
   //getting post data
   useEffect(() => {
-    db.collection('climbs')
-      .orderBy("timestamp", "desc")
-      .get()
-      .then((querySnapshot) => {
-        setPosts(querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          username: doc.data().username,
-          userImg: doc.data().profileImg,
-          img: doc.data().image,
-          climbGrade: doc.data().climbGradeRef,
-          climbLocation: doc.data().climbLocation,
-          climbNote: doc.data().climbNoteRef,
-          climb: doc.data().climbRef,
-          climbedAs: doc.data().climbedAsRef,
-        })))
-      }); 
+      const unsubscribe = onSnapshot(query(collection(db, 'climbs'), orderBy('timestamp', 'desc')), 
+        snapshot => {
+          setPosts(snapshot.docs)
+        });
+        return unsubscribe
   }, [db])   
 
   return (
@@ -40,14 +21,14 @@ function Posts() {
     {posts.map(post => (
       <Post key={post.id} 
             id={post.id} 
-            username={post.username} 
-            userImg = {post.userImg} 
-            img={post.img} 
-            climb={post.climb} 
-            climbGrade={post.climbGrade} 
-            climbLocation={post.climbLocation} 
-            climbNote={post.climbNote} 
-            climbedAs={post.climbedAs} 
+            username={post.data().username} 
+            userImg = {post.data().profileImg} 
+            img={post.data().image} 
+            climb={post.data().climbRef} 
+            climbGrade={post.data().climbGradeRef} 
+            climbLocation={post.data().climbLocation} 
+            climbNote={post.data().climbNoteRef} 
+            climbedAs={post.data().climbedAsRef} 
         />
     ))}
 </div>

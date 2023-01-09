@@ -26,45 +26,27 @@ function Header() {
 
     const [open, setOpen] = useRecoilState(modalState)
 
-    //getting post data
-    useEffect(() => {
-      db.collection('climbs')
-        .get()
-        .then((querySnapshot) => {
-          setPosts(querySnapshot.docs.map(doc => ({
-            id: doc.id,
-            username: doc.data().username,
-            userImg: doc.data().profileImg,
-            img: doc.data().image,
-            climbGrade: doc.data().climbGradeRef,
-            climbLocation: doc.data().climbLocation,
-            climbNote: doc.data().climbNoteRef,
-            climb: doc.data().climbRef,
-            climbedAs: doc.data().climbedAsRef,
-          })))
-        }); 
-    }, [db])   
-  
-    //getting post data
-    useEffect(() => {
-      db.collection('users')
-        .doc(session?.user.email)
-        .collection('climbs')
-        .get()
-        .then((querySnapshot) => {
-          setMyPosts(querySnapshot.docs.map(doc => ({
-            id: doc.id,
-            username: doc.data().username,
-            userImg: doc.data().profileImg,
-            img: doc.data().image,
-            climbGrade: doc.data().climbGradeRef,
-            climbLocation: doc.data().climbLocation,
-            climbNote: doc.data().climbNoteRef,
-            climb: doc.data().climbRef,
-            climbedAs: doc.data().climbedAsRef,
-          })))
-        }); 
-    }, [])  
+        //getting post data
+        useEffect(() => {
+            const unsubscribe = onSnapshot(query(collection(db, 'climbs'), orderBy('timestamp', 'desc')), 
+              snapshot => {
+                setPosts(snapshot.docs)
+              });
+              return unsubscribe
+        }, [db])   
+
+        //getting my post data
+        useEffect(() => {
+            try {                
+                const unsubscribe_myposts = onSnapshot(query(collection(db, 'users', session?.user?.email, 'climbs'), orderBy('timestamp', 'desc')), 
+                  snapshot => {
+                    setMyPosts(snapshot.docs)
+                  });
+                  return unsubscribe_myposts
+            } catch (error) {
+                console.log("My data fetch error ->> " , error)
+            }
+        }, [db])   
 
   return (
     <div className='sticky top-0 z-50 shadow-sm bg-green3 text-white'>
@@ -197,14 +179,14 @@ function Header() {
                     >
                         Latest Ascents
                     </button>
-                        <ul class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none bg-gray-800"
+                        <ul class="dropdown-menu min-w-max absolute text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none bg-gray-800"
                             aria-labelledby="dropdownMenuButton2">
                             {posts?.map(item => (
                             <>
                                 <li>
                                     <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 active:bg-blue-600"
                                         href="#"    
-                                    >{item.climb} - {item.climbGrade} - {item.username}
+                                    >{item.data().climbRef} - {item.data().climbGradeRef} - {item.data().username}
                                     </a>
                                 </li>
                             </>
@@ -226,14 +208,14 @@ function Header() {
                     >
                         My Ascents
                     </button>
-                        <ul class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none bg-gray-800"
+                        <ul class="dropdown-menu min-w-max absolute text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none bg-gray-800"
                             aria-labelledby="dropdownMenuButton2">
                             {myPosts?.map(item => (
                             <>
                                 <li>
                                     <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 active:bg-blue-600"
                                         href="#"    
-                                    >{item.climb} - {item.climbGrade}
+                                    >{item.data().climbRef} - {item.data().climbGradeRef}
                                     </a>
                                 </li>
                             </>
@@ -257,7 +239,7 @@ function Header() {
                     >
                         Friends
                     </button>
-                        <ul class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none bg-gray-800"
+                        <ul class="dropdown-menu min-w-max absolute text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none bg-gray-800"
                             aria-labelledby="dropdownMenuButton2">
                             {/*!!implement friends {myPosts.map(item => (
                             <>

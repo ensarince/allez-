@@ -23,12 +23,12 @@ const firebaseConfig = {
   measurementId: "G-JG12Y7EP1R"
 };
 // get the apps, if there are no apps, get app
-/* const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const db = getFirestore();
-const storage = getStorage(); */
+const storage = getStorage();
 
-const app = firebase.initializeApp(firebaseConfig)
+/* const app = firebase.initializeApp(firebaseConfig)
 const db = app.firestore()
-var storage = getStorage(app)
+var storage = getStorage(app) */
 
 export {app, db, storage};
