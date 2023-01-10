@@ -53,10 +53,10 @@ function Header() {
       
       <div className='flex flex-col md:flex-row'>
 
-        <div className='flex flex-1 justify-between items-center max-w-6xl ml-3 mr-0 lg:mx-auto space-x-2 md:space-x-0'>
+        <div className='flex flex-1 justify-between items-center max-w-6xl ml-3 mr-0 lg:mx-auto space-x-2 md:space-x-0 px-2 md:px-0'>
             
             {/* /* Left */}
-            <div onClick={() => router.push('/')} className='flex-shrink-0 relative w-24 cursor-pointer hover:scale-110 transition-all duration-150 ease-out'>
+            <div onClick={() => router.push('/')} className='flex-shrink-0 relative w-20 md:w-24 cursor-pointer hover:scale-110 transition-all duration-150 ease-out'>
                 <Image src="/logo.png" width="120" height="120"
                 objectFit='contain'/>
             </div>
@@ -76,7 +76,7 @@ function Header() {
             {/*Dropdown  */}
             {session ? 
                 (
-                <Menu as="div" className="relative inline-block md:hidden text-left w-8 ">
+                <Menu as="div" className="relative inline-block md:hidden text-left w-8 sm:w-24">
                 <div>
                     <Menu.Button className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white1 px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
                     <ChevronDownIcon className="-mr-2 -ml-2 h-5 w-5" aria-hidden="true" />
@@ -162,7 +162,6 @@ function Header() {
 
                 )}
             </div>
-
         </div>
 
         {/* Bottom, mobile navigation */}
@@ -184,9 +183,9 @@ function Header() {
                             {posts?.map(item => (
                             <>
                                 <li>
-                                    <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 active:bg-blue-600"
+                                    <a class="flex dropdown-item text-sm py-2 px-4 font-normal w-80 text-truncate break-all whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 active:bg-blue-600"
                                         href="#"    
-                                    >{item.data().climbRef} - {item.data().climbGradeRef} - {item.data().username}
+                                    >{<img className='rounded-full h-5 mr-2' src={item.data().profileImg} alt="" />}  {item.data().climbRef} - {item.data().climbGradeRef} 
                                     </a>
                                 </li>
                             </>
@@ -213,7 +212,7 @@ function Header() {
                             {myPosts?.map(item => (
                             <>
                                 <li>
-                                    <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 active:bg-blue-600"
+                                    <a class="dropdown-item text-sm py-2 px-4 font-normal w-80 text-truncate break-all block w-full whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 active:bg-blue-600"
                                         href="#"    
                                     >{item.data().climbRef} - {item.data().climbGradeRef}
                                     </a>
