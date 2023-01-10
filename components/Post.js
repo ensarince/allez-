@@ -81,8 +81,20 @@ function Post({ id, username, userImg, img, climb, climbGrade, climbLocation, cl
   return (
     <div className='bg-green1 my-7 '>
 
-    {/* img */}
-    <img src={img} className="object-cover w-full" alt="" />
+      {/* img and hover section */}
+          <div className='group relative flex cursor-pointer items-center justify-center'>
+              <img src={img} className="overflow-hidden border-gray-500 object-cover w-full
+                filter group-hover:grayscale rounded-sm hover:rounded-md transition-all duration-500 ease-in-out" alt="" />
+
+              <div className='absolute opacity-0 group-hover:opacity-80 w-64 md:w-80 transition duration-500 rounded-md ease-in-out group-hover:bg-white z-0 p-2'>
+                  <div className='flex items-center truncate break-words flex-col space-y-4 justify-center h-full'>
+                      <p className='text-md font-semibold text-black opacity-100 '>{climb}</p>
+                      <p className='text-md font-semibold text-black opacity-100 '>{climbGrade}</p>
+                      <p className='text-md font-semibold text-black opacity-100 '>{climbedAs}</p>
+                      <p className='text-md font-semibold text-black opacity-100 '>{climbLocation}</p>
+                  </div>
+              </div>
+          </div>
 
     {/* buttons */}
     {session && (
