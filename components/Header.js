@@ -35,18 +35,20 @@ function Header() {
               return unsubscribe
         }, [db])   
 
+
         //getting my post data
         useEffect(() => {
-            try {                
-                const unsubscribe_myposts = onSnapshot(query(collection(db, 'users', session?.user?.email, 'climbs'), orderBy('timestamp', 'desc')), 
-                  snapshot => {
-                    setMyPosts(snapshot.docs)
-                  });
-                  return unsubscribe_myposts
-            } catch (error) {
-                console.log("My data fetch error ->> " , error)
-            }
-        }, [db])   
+          try {                
+              const unsubscribe = onSnapshot(query(collection(db, 'users', session?.user?.email, 'climbs'), orderBy('timestamp', 'desc')), 
+                snapshot => {
+                  setMyPosts(snapshot.docs)
+                });
+                return unsubscribe
+          } catch (error) {
+              console.log("My data fetch error ->> " , error)
+          }
+      }, [db])   
+  
 
   return (
     <div className='sticky top-0 z-50 shadow-sm bg-green3 text-white'>
@@ -78,7 +80,7 @@ function Header() {
                 (
                 <Menu as="div" className="relative inline-block md:hidden text-left w-8 sm:w-24">
                 <div>
-                    <Menu.Button className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white1 px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+                    <Menu.Button className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white1 px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none  focus:ring-none ">
                     <ChevronDownIcon className="-mr-2 -ml-2 h-5 w-5" aria-hidden="true" />
                     </Menu.Button>
                 </div>
