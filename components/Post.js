@@ -16,6 +16,13 @@ function Post({ id, username, userImg, img, climb, climbGrade, climbLocation, cl
     const [comments, setComments] = useState([])
     const [likes, setLikes] = useState([])
     const [hasLiked, setHasLiked] = useState(false)
+    const [readMore, setReadMore] = useState(true)
+
+      //read more functionality
+      const toggleReadMore = (e) => {
+        e.preventDefault()
+        setReadMore(!readMore);
+      };
 
           //getting comment data
           useEffect(() => {
@@ -79,26 +86,45 @@ function Post({ id, username, userImg, img, climb, climbGrade, climbLocation, cl
 
     {/* buttons */}
     {session && (
-        <div className='flex justify-start space-x-2 px-4 pt-4'>
-          <div className='flex space-x-4'>
+        <div className='flex justify-between items-center px-4 pt-4'>
+          <div className='flex space-x-4 items-center'>
+            <img src={userImg || "https://media.tenor.com/5aF7np_zPEgAAAAM/pepe-why-pepe-the-frog.gif"} className=" rounded-full h-12 w-12 object-contain border" alt="" />
+            <span className='font-semibold whitespace-nowrap'>{username}</span>
+          </div>  
+          <div className='flex space-x-2 md:space-x-4'>
             {hasLiked ? (
               <HeartIconFilled onClick={likePost} className="btn text-red-500" />
-            ) : (
+             ) : (
             <HeartIcon onClick={likePost} className='btn'/>
-            )}            
-          </div>
-          {likes.length > 0 && (
+            )}                              
+
+            {likes.length > 0 && (
             <p className='font-bold mt-1'>{likes.length} likes</p>
-          )}
+            )}
+          </div>
         </div>
       )
     }
 
        {/* caption */}
-       <p className='p-5 truncate flex items-center justify-start space-x-2'>
-        <img src={userImg || "https://media.tenor.com/5aF7np_zPEgAAAAM/pepe-why-pepe-the-frog.gif"} className="rounded-full h-12 w-12 object-contain border" alt="" />
-        <span className='font-bold mr-2'>{username}</span>
-        {climbNote}
+       <p className='p-5 flex items-start justify-start space-x-4 break-all '>
+        {climbNote.length < 100 ? (
+          <span className='text-green3'>{climbNote}</span>
+        ) : (
+          <>
+          {!readMore ? climbNote : 
+            (<span>
+                {climbNote.slice(0, 100)}
+    
+                <span onClick={toggleReadMore} className="text-green3 cursor-pointer font-semibold break-keep">
+                  {readMore ? "...read more" : " show less"}
+                </span>
+                
+            </span>
+            )
+          }
+        </>
+        )}
       </p>
 
       {/* Comments section */}

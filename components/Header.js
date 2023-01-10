@@ -64,7 +64,7 @@ function Header() {
     
             {/* /* Middle - Search Input Field */}
             <div className='max-w-xs'>
-                <div className='relative mt-1 p-3 rounded-md'>
+                <div className='relative mt-1 p-2 md:p-3 rounded-md'>
                     <div className='absolute inset-y-0 pl-3 flex items-center pointer-events-none'>
                         <SearchIcon className='h-5 w-5 text-white '/>
                     </div>
@@ -170,7 +170,7 @@ function Header() {
                 <div>
                     <div class="dropdown relative">
                     <button
-                        class="dropdown-toggle p-2 text-white font-bold text-sm rounded hover:shadow-lg focus:bg-green2 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green3 active:shadow-lg active:text-green3 transition duration-150 ease-in-out flex items-center"
+                        class="dropdown-toggle p-2 text-white font-bold text-sm rounded hover:shadow-lg focus:bg-green2 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green3 active:shadow-lg transition duration-150 ease-in-out flex items-center"
                         type="button"
                         id="dropdownMenuButton2"
                         data-bs-toggle="dropdown"
@@ -183,7 +183,7 @@ function Header() {
                             {posts?.map(item => (
                             <>
                                 <li>
-                                    <a class="flex dropdown-item text-sm py-2 px-4 font-normal w-80 text-truncate break-all whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 active:bg-blue-600"
+                                    <a class="flex dropdown-item text-sm py-2 px-4 font-normal w-80 text-truncate break-all whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 active:bg-green3"
                                         href="#"    
                                     >{<img className='rounded-full h-5 mr-2' src={item.data().profileImg} alt="" />}  {item.data().climbRef} - {item.data().climbGradeRef} 
                                     </a>
@@ -212,7 +212,7 @@ function Header() {
                             {myPosts?.map(item => (
                             <>
                                 <li>
-                                    <a class="dropdown-item text-sm py-2 px-4 font-normal w-80 text-truncate break-all block w-full whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 active:bg-blue-600"
+                                    <a class="dropdown-item text-sm py-2 px-4 font-normal w-80 text-truncate break-all block whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white  focus:bg-gray-700 active:bg-green3"
                                         href="#"    
                                     >{item.data().climbRef} - {item.data().climbGradeRef}
                                     </a>
@@ -230,7 +230,7 @@ function Header() {
                 <div>
                     <div class="dropdown relative">
                     <button
-                        class="dropdown-toggle p-2 text-white font-bold text-sm rounded hover:shadow-lg focus:bg-green2 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green3 active:shadow-lg active:text-green3 transition duration-150 ease-in-out flex items-center"
+                        class="dropdown-toggle p-2 text-white font-bold text-sm rounded hover:shadow-lg focus:bg-green2 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green3 active:shadow-lg transition duration-150 ease-in-out flex items-center"
                         type="button"
                         id="dropdownMenuButton2"
                         data-bs-toggle="dropdown"
