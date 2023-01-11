@@ -3,8 +3,8 @@ import React, {useEffect, useState} from 'react'
 import Post from "../components/Post"
 import { db } from '../firebase'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
-function FeedSum() {
 
+function FeedSum() {
   const [posts, setPosts] = useState([])
 
         //getting post data
@@ -15,6 +15,8 @@ function FeedSum() {
             });
             return unsubscribe
       }, [db])   
+
+      //filter feedsum
   
   return (
     <div className='bg-green1 rounded-sm my-10'>

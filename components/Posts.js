@@ -4,7 +4,7 @@ import Post from "../components/Post"
 function Posts({posts}) {
 
   return (
-    <div>
+    <div className={posts.length == 0 ? 'h-screen' : null}>
     {posts.map(post => (
       <Post key={post.id} 
             id={post.id} 

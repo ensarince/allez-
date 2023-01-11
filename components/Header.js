@@ -24,6 +24,7 @@ function Header({posts, myPosts, searchQuery, setSearchQuery, handleSearch, hand
     //opens model state
     const [open, setOpen] = useRecoilState(modalState)
 
+    //resets the input field and calls handleReset function
     const handleSearchReset = () => {
         handleReset()
         const searchDocument = document.getElementById("inputChange")
@@ -42,7 +43,6 @@ function Header({posts, myPosts, searchQuery, setSearchQuery, handleSearch, hand
                 <Image src="/logo.png" width="120" height="120"
                 objectFit='contain'/>
             </div>
-
     
             {/* /* Middle - Search Input Field */}
             <div className='max-w-xs'>
@@ -53,7 +53,7 @@ function Header({posts, myPosts, searchQuery, setSearchQuery, handleSearch, hand
                                 <SearchIcon type='submit' className='h-5 w-5 text-white '/>
                             ):
                             (
-                            <XIcon onClick={handleSearchReset} className='h-5 w-5 text-white z-50 cursor-pointer absolute'/>
+                                <XIcon onClick={handleSearchReset} className='h-5 w-5 text-white z-50 cursor-pointer absolute'/>
                             )}
                         </div>
                         <input id='inputChange' onChange={(e) => setSearchQuery(e.target.value)} className='bg-green2 block w-full pl-10 text-green3 font-bold sm:text-sm border-green2 rounded-md focus:ring-black
@@ -159,7 +159,7 @@ function Header({posts, myPosts, searchQuery, setSearchQuery, handleSearch, hand
                 <div>
                     <div class="dropdown relative">
                     <button
-                        class="dropdown-toggle p-2 text-white font-bold text-sm rounded hover:shadow-lg focus:bg-green2 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green3 active:shadow-lg transition duration-150 ease-in-out flex items-center"
+                        class="dropdown-toggle p-2 text-white font-bold text-sm active:bg-gray-500 transition duration-150 ease-in-out flex items-center"
                         type="button"
                         id="dropdownMenuButton2"
                         data-bs-toggle="dropdown"
@@ -188,7 +188,7 @@ function Header({posts, myPosts, searchQuery, setSearchQuery, handleSearch, hand
                 <div>
                     <div class="dropdown relative">
                     <button
-                        class="dropdown-toggle p-2 text-white font-bold text-sm rounded hover:shadow-lg focus:bg-green2 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green3 active:shadow-lg active:text-green3 transition duration-150 ease-in-out flex items-center"
+                        class="dropdown-toggle p-2 text-white font-bold text-sm rounded active:bg-gray-500 transition duration-150 ease-in-out flex items-center"
                         type="button"
                         id="dropdownMenuButton2"
                         data-bs-toggle="dropdown"
@@ -219,7 +219,7 @@ function Header({posts, myPosts, searchQuery, setSearchQuery, handleSearch, hand
                 <div>
                     <div class="dropdown relative">
                     <button
-                        class="dropdown-toggle p-2 text-white font-bold text-sm rounded hover:shadow-lg focus:bg-green2 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green3 active:shadow-lg transition duration-150 ease-in-out flex items-center"
+                        class="dropdown-toggle p-2 text-white font-bold text-sm rounded active:bg-gray-500 transition duration-150 ease-in-out flex items-center"
                         type="button"
                         id="dropdownMenuButton2"
                         data-bs-toggle="dropdown"
