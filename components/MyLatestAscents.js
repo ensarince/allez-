@@ -1,29 +1,7 @@
 import { UserIcon } from '@heroicons/react/outline'
 import React, {useState, useEffect} from 'react'
-import {useSession, signIn, signOut} from "next-auth/react"
-import { db } from '../firebase'
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 
-function MyLatestAscents() {
-
-  const [myPosts, setMyPosts] = useState([])
-  const { data: session } = useSession();
-
-        //getting my post data
-        useEffect(() => {
-          try {                
-              const unsubscribe = onSnapshot(query(collection(db, 'users', session?.user?.email, 'climbs'), orderBy('timestamp', 'desc')), 
-                snapshot => {
-                  setMyPosts(snapshot.docs)
-                });
-                return unsubscribe
-          } catch (error) {
-              console.log("My data fetch error ->> " , error)
-          }
-      }, [db])   
-
-
-  
+function MyLatestAscents({myPosts}) {
 
   return (
     <div className='bg-green1 rounded-sm p-5 my-4'>

@@ -15,8 +15,6 @@ function FeedSum() {
             });
             return unsubscribe
       }, [db])   
-
-      console.log(posts)
   
   return (
     <div className='bg-green1 rounded-sm my-10'>

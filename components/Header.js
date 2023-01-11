@@ -5,50 +5,30 @@ import {SearchIcon,
         DotsHorizontalIcon,
         HeartIcon, 
         MailOpenIcon, 
-        ChevronDownIcon} from "@heroicons/react/outline"
+        ChevronDownIcon,
+        XIcon
+        }from "@heroicons/react/outline"
+        import { Fragment } from 'react'
 import { useRouter } from 'next/router'
 import {useSession, signIn, signOut} from "next-auth/react"
-import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { useRecoilState } from 'recoil';
 import { modalState } from "../atoms/modalAtom"
-import { db } from '../firebase'
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 
-function Header() {
+function Header({posts, myPosts, searchQuery, setSearchQuery, handleSearch, handleReset}) {
 
     //usesession from next-auth, rename data to session
     const { data: session } = useSession();
     const router = useRouter()
 
-    const [posts, setPosts] = useState([])
-    const [myPosts, setMyPosts] = useState([])
-
+    //opens model state
     const [open, setOpen] = useRecoilState(modalState)
 
-        //getting post data
-        useEffect(() => {
-            const unsubscribe = onSnapshot(query(collection(db, 'climbs'), orderBy('timestamp', 'desc')), 
-              snapshot => {
-                setPosts(snapshot.docs)
-              });
-              return unsubscribe
-        }, [db])   
-
-
-        //getting my post data
-        useEffect(() => {
-          try {                
-              const unsubscribe = onSnapshot(query(collection(db, 'users', session?.user?.email, 'climbs'), orderBy('timestamp', 'desc')), 
-                snapshot => {
-                  setMyPosts(snapshot.docs)
-                });
-                return unsubscribe
-          } catch (error) {
-              console.log("My data fetch error ->> " , error)
-          }
-      }, [db])   
-  
+    const handleSearchReset = () => {
+        handleReset()
+        const searchDocument = document.getElementById("inputChange")
+        searchDocument.value = "";
+    }
 
   return (
     <div className='sticky top-0 z-50 shadow-sm bg-green3 text-white'>
@@ -66,13 +46,20 @@ function Header() {
     
             {/* /* Middle - Search Input Field */}
             <div className='max-w-xs'>
-                <div className='relative mt-1 p-2 md:p-3 rounded-md'>
-                    <div className='absolute inset-y-0 pl-3 flex items-center pointer-events-none'>
-                        <SearchIcon className='h-5 w-5 text-white '/>
-                    </div>
-                    <input className='bg-green2 block w-full pl-10 text-green3 font-bold sm:text-sm border-green2 rounded-md focus:ring-black
-                        focus:border-black' type="text" />
-                </div>
+                <form onSubmit={handleSearch}>
+                    <div className='relative mt-1 p-2 md:p-3 rounded-md'>
+                        <div className='absolute inset-y-0 pl-3 flex items-center'>
+                            {searchQuery == '' ? (
+                                <SearchIcon type='submit' className='h-5 w-5 text-white '/>
+                            ):
+                            (
+                            <XIcon onClick={handleSearchReset} className='h-5 w-5 text-white z-50 cursor-pointer absolute'/>
+                            )}
+                        </div>
+                        <input id='inputChange' onChange={(e) => setSearchQuery(e.target.value)} className='bg-green2 block w-full pl-10 text-green3 font-bold sm:text-sm border-green2 rounded-md focus:ring-black
+                            focus:border-black' type="text" placeholder='climb / user'/>
+                        </div>
+                </form>
             </div>
 
             {/*Dropdown  */}

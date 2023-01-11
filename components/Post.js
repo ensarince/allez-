@@ -97,26 +97,29 @@ function Post({ id, username, userImg, img, climb, climbGrade, climbLocation, cl
           </div>
 
     {/* buttons */}
-    {session && (
         <div className='flex justify-between items-center px-4 pt-4'>
           <div className='flex space-x-4 items-center'>
             <img src={userImg || "https://media.tenor.com/5aF7np_zPEgAAAAM/pepe-why-pepe-the-frog.gif"} className=" rounded-full h-12 w-12 object-contain border" alt="" />
             <span className='font-semibold whitespace-nowrap'>{username}</span>
           </div>  
           <div className='flex space-x-2 md:space-x-4'>
-            {hasLiked ? (
-              <HeartIconFilled onClick={likePost} className="btn text-red-500" />
-             ) : (
-            <HeartIcon onClick={likePost} className='btn'/>
-            )}                              
+            
+            {session && (
+              <>
+              {hasLiked ? (
+                <HeartIconFilled onClick={likePost} className="btn text-red-500" />
+              ) : (
+              <HeartIcon onClick={likePost} className='btn'/>
+              )}                              
+              </>
+            )}
 
             {likes.length > 0 && (
             <p className='font-bold mt-1'>{likes.length} likes</p>
             )}
           </div>
         </div>
-      )
-    }
+
 
        {/* caption */}
        <p className='p-5 flex items-start justify-start space-x-4 break-all '>

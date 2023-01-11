@@ -1,20 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import Post from "../components/Post"
-import { db } from '../firebase'
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 
-function Posts() {
-
-  const [posts, setPosts] = useState([])
-
-  //getting post data
-  useEffect(() => {
-      const unsubscribe = onSnapshot(query(collection(db, 'climbs'), orderBy('timestamp', 'desc')), 
-        snapshot => {
-          setPosts(snapshot.docs)
-        });
-        return unsubscribe
-  }, [db])   
+function Posts({posts}) {
 
   return (
     <div>

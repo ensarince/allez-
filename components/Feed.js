@@ -8,7 +8,7 @@ import {useSession, signIn, signOut} from "next-auth/react"
 import Footer from "../components/Footer"
 
 
-function Feed() {
+function Feed({posts, myPosts}) {
 
 const { data: session } = useSession();
 
@@ -31,7 +31,7 @@ const { data: session } = useSession();
 
         <section className='hidden xl:inline-grid md:col-span-1 overflow-hidden'>
             <div className='fixed top-20 h-full w-fit'>
-                <FeedSum/> 
+                <FeedSum posts={posts}/> 
             </div>
         </section>
 
@@ -46,7 +46,7 @@ const { data: session } = useSession();
             ):
             (
                 <>
-                <Posts />
+                <Posts posts={posts} />
                 <Footer />
                 </>
             )
@@ -59,7 +59,7 @@ const { data: session } = useSession();
                 {session ?
                 (
                     <>
-                        <MyLatestAscents className="overflow-y-scroll scrollbar-thin scrollbar-thumb-green3"/>
+                        <MyLatestAscents myPosts={myPosts} className="overflow-y-scroll scrollbar-thin scrollbar-thumb-green3"/>
                         <Friends className=""/>
                     </>
                 ): null}
