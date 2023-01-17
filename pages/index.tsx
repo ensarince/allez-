@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { Inter } from '@next/font/google'
 import Header from "../components/Header"
 import Feed from "../components/Feed"
 import Modal from "../components/Modal"
@@ -24,6 +23,11 @@ export default function Home() {
       //search ınput
       const [searchQuery, setSearchQuery] = useState('');
       const [search, setSearch] = useState(false)
+
+      //open inbox controller
+      const [openInbox, setOpenInbox] = useState(false)
+      const [openMobileInbox, setOpenMobileInbox] = useState(false)
+
       
       //getting post data
       useEffect(() => {
@@ -37,7 +41,8 @@ export default function Home() {
       //getting my post data
       useEffect(() => {
         try {                
-            const unsubscribe = onSnapshot(query(collection(db, 'users', session?.user?.email, 'climbs'), orderBy('timestamp', 'desc')), 
+          //!fix any
+            const unsubscribe = onSnapshot(query(collection(db as any, 'users', session?.user?.email as any, 'climbs'), orderBy('timestamp', 'desc')), 
             (snapshot: any) => {
                 setMyPosts(snapshot.docs)
               });
@@ -70,9 +75,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header posts={posts} myPosts={myPosts} searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleSearch={handleSearch} handleReset={handleReset} />
+      <Header openMobileInbox={openMobileInbox} setOpenMobileInbox={setOpenMobileInbox}  openInbox={openInbox} setOpenInbox={setOpenInbox} posts={posts} myPosts={myPosts} searchQuery={searchQuery} setSearchQuery={setSearchQuery} handleSearch={handleSearch} handleReset={handleReset} />
 
-      <Feed posts={posts} myPosts={myPosts} />
+      <Feed openMobileInbox={openMobileInbox} openInbox={openInbox} posts={posts} myPosts={myPosts} session={session} />
 
       <Modal />
       

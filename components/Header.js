@@ -15,7 +15,16 @@ import { Menu, Transition } from '@headlessui/react'
 import { useRecoilState } from 'recoil';
 import { modalState } from "../atoms/modalAtom"
 
-function Header({posts, myPosts, searchQuery, setSearchQuery, handleSearch, handleReset}) {
+function Header({posts, 
+                myPosts, 
+                searchQuery, 
+                setSearchQuery, 
+                handleSearch, 
+                handleReset, 
+                openInbox, 
+                setOpenInbox, 
+                openMobileInbox, 
+                setOpenMobileInbox}) {
 
     //usesession from next-auth, rename data to session
     const { data: session } = useSession();
@@ -27,8 +36,7 @@ function Header({posts, myPosts, searchQuery, setSearchQuery, handleSearch, hand
     //resets the input field and calls handleReset function
     const handleSearchReset = () => {
         handleReset()
-        const searchDocument = document.getElementById("inputChange")
-        searchDocument.value = "";
+        setSearchQuery("")
     }
 
   return (
@@ -56,7 +64,7 @@ function Header({posts, myPosts, searchQuery, setSearchQuery, handleSearch, hand
                                 <XIcon onClick={handleSearchReset} className='h-5 w-5 text-white z-50 cursor-pointer absolute'/>
                             )}
                         </div>
-                        <input id='inputChange' onChange={(e) => setSearchQuery(e.target.value)} className='bg-green2 block w-full pl-10 text-green3 font-bold sm:text-sm border-green2 rounded-md focus:ring-black
+                        <input id='inputChange' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className='bg-green2 block w-full pl-10 text-green3 font-bold sm:text-sm border-green2 rounded-md focus:ring-black
                             focus:border-black' type="text" placeholder='climb / user'/>
                         </div>
                 </form>
@@ -83,15 +91,6 @@ function Header({posts, myPosts, searchQuery, setSearchQuery, handleSearch, hand
                 >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="py-1">
-                        <Menu.Item>
-                        {({ active }) => (
-                            <a
-                            href="#"
-                            className={active ? 'bg-gray-100 text-gray-900' : 'text-gray-700 block px-4 py-2 text-sm'}>
-                            Messages
-                            </a>
-                        )}
-                        </Menu.Item>
                         <Menu.Item>
                         {({ active }) => (
                             <a
@@ -136,7 +135,7 @@ function Header({posts, myPosts, searchQuery, setSearchQuery, handleSearch, hand
                     <div className="flex space-x-2 items-baseline">
                         <PlusIcon onClick={() => setOpen(true)} className='navBtn' />
                         <div className='relative navBtn'>
-                            <MailOpenIcon className='navBtn' />
+                            <MailOpenIcon onClick={() => setOpenInbox(!openInbox)} className='navBtn' />
                             <div className='absolute -top-1 -right-2 text-xs w-5 h-5 bg-red-500 rounded-full flex items-center justify-center animate-pulse text-white'>3</div>
                         </div>
                     </div>
@@ -183,7 +182,7 @@ function Header({posts, myPosts, searchQuery, setSearchQuery, handleSearch, hand
                     </div>
                  </div>
                 </div>
-                {session && 
+
                 <div class="flex justify-center">
                 <div>
                     <div class="dropdown relative">
@@ -212,38 +211,13 @@ function Header({posts, myPosts, searchQuery, setSearchQuery, handleSearch, hand
                     </div>
                  </div>
                 </div>
-                }
-
-                {session &&
-                <div class="flex justify-center">
+                
+                <div class="flex justify-center items-center">
                 <div>
-                    <div class="dropdown relative">
-                    <button
-                        class="dropdown-toggle p-2 text-white font-bold text-sm rounded active:bg-gray-500 transition duration-150 ease-in-out flex items-center"
-                        type="button"
-                        id="dropdownMenuButton2"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                    >
-                        Friends
-                    </button>
-                        <ul class="dropdown-menu min-w-max absolute text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none bg-gray-800"
-                            aria-labelledby="dropdownMenuButton2">
-                            {/*!!implement friends {myPosts.map(item => (
-                            <>
-                                <li>
-                                    <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 active:bg-blue-600"
-                                        href="#"    
-                                    >{item.climb} - {item.climbGrade}
-                                    </a>
-                                </li>
-                            </>
-                            ))} */}
-                        </ul>
-                    </div>
+                    <MailOpenIcon onClick={() => setOpenMobileInbox(!openMobileInbox)} className='h-7 w-7' />
                  </div>
                 </div>
-                }
+                
             <DotsHorizontalIcon className="py-2 mt-1 h-8 w-8 active:text-gray-300 active:scale-105 transition-all duration-150 ease-out" aria-hidden="true" />
         </div>
 
