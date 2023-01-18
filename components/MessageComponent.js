@@ -17,7 +17,7 @@ function MessageComponent({message}) {
             <p className={`text-[0.65rem] px-[2px] pb-[2px] ${isUser ? "text-blue-400 text-right" : "text-red-400 text-left"}`}>{message.username}</p>
 
             <div className="flex items-end">
-                <div className={`px-3 py-2 rounded-lg w-fit text-white ${isUser ? "bg-blue-400 ml-auto order-2" : "bg-red-400 "}`}>
+                <div className={`px-3 py-2 rounded-lg w-fit break-all text-white ${isUser ? "bg-blue-400 ml-auto order-2" : "bg-red-400 "}`}>
                     <p>{message.message}</p>
                 </div>
 
