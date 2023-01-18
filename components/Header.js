@@ -6,7 +6,7 @@ import {SearchIcon,
         HeartIcon, 
         MailOpenIcon, 
         ChevronDownIcon,
-        XIcon
+        RefreshIcon
         }from "@heroicons/react/outline"
         import { Fragment } from 'react'
 import { useRouter } from 'next/router'
@@ -48,7 +48,7 @@ function Header({posts,
             
             {/* /* Left */}
             <div onClick={() => router.push('/')} className='flex-shrink-0 relative w-20 md:w-24 cursor-pointer hover:scale-110 transition-all duration-150 ease-out'>
-                <Image src="/logo.png" width="120" height="120"
+                <Image src="/logo.png" width="120" height="120" className='object-contain'
                 objectFit='contain'/>
             </div>
     
@@ -61,7 +61,7 @@ function Header({posts,
                                 <SearchIcon type='submit' className='h-5 w-5 text-white '/>
                             ):
                             (
-                                <XIcon onClick={handleSearchReset} className='h-5 w-5 text-white z-50 cursor-pointer absolute'/>
+                                <RefreshIcon onClick={handleSearchReset} className='h-5 w-5 text-green3 z-50 cursor-pointer absolute'/>
                             )}
                         </div>
                         <input id='inputChange' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className='bg-green2 block w-full pl-10 text-green3 font-bold sm:text-sm border-green2 rounded-md focus:ring-black

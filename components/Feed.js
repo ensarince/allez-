@@ -45,7 +45,7 @@ function Feed({posts, myPosts, openInbox, openMobileInbox, session}) {
                     <>
                     {
                         <>
-                        <Inbox />
+                        <Inbox session={session}/>
                         </>
                     }
                     </>
