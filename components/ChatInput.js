@@ -55,8 +55,8 @@ function ChatInput({ session }) {
 
   return (
     <form onSubmit={addMessage} className='fixed bottom-0 z-50 w-fit md:left-none flex px-2 py-3 space-x-2 border-t border-gray-100 bg-green1 '>
-        <input disabled={!session} id="messageInput" value={input} type="text" onChange={e => setInput(e.target.value)} className='flex-1 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green3
-            focus: border-transparent px-5  py-3 disabled:opacity-50 disabled:cursor-not-allowed' placeholder='Enter a message...'/>
+        <input id="messageInput" value={input} type="text" onChange={e => setInput(e.target.value)} className='flex-1 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green3
+            focus: border-transparent px-5  py-3 ' placeholder='Enter a message...'/>
         <button disabled={!input} type='submit' className='bg-green2 hover:bg-green3 text-white font-bold py-2 px-4 rounded
             disabled:opacity-50 disabled:cursor-not-allowed'>
                 Send

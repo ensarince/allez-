@@ -166,12 +166,12 @@ function Header({posts,
                     >
                         Latest Ascents
                     </button>
-                        <ul class="dropdown-menu min-w-max absolute text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none bg-gray-800"
+                        <ul class="dropdown-menu absolute text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none bg-gray-800"
                             aria-labelledby="dropdownMenuButton2">
                             {posts?.map(item => (
                             <>
                                 <li>
-                                    <a class="flex dropdown-item text-sm py-2 px-4 font-normal w-80 text-truncate break-all whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 active:bg-green3"
+                                    <a class="flex dropdown-item text-sm py-2 px-4 font-normal w-64 text-truncate break-all whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 active:bg-green3"
                                         href="#"    
                                     >{<img className='rounded-full h-5 mr-2' src={item.data().profileImg} alt="" />}  {item.data().climbRef} - {item.data().climbGradeRef} 
                                     </a>
@@ -195,12 +195,12 @@ function Header({posts,
                     >
                         My Ascents
                     </button>
-                        <ul class="dropdown-menu min-w-max absolute text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none bg-gray-800"
+                        <ul class="dropdown-menu min-w-max absolute text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none bg-gray-800  overflow-x-auto scrollbar scrollbar-none"
                             aria-labelledby="dropdownMenuButton2">
                             {myPosts?.map(item => (
                             <>
                                 <li>
-                                    <a class="dropdown-item text-sm py-2 px-4 font-normal w-80 text-truncate break-all block whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white  focus:bg-gray-700 active:bg-green3"
+                                    <a class="dropdown-item text-sm py-2 px-4 font-normal w-64 text-truncate break-all block whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white  focus:bg-gray-700 active:bg-green3"
                                         href="#"    
                                     >{item.data().climbRef} - {item.data().climbGradeRef}
                                     </a>
