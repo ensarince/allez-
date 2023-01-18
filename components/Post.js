@@ -161,7 +161,7 @@ function Post({ id, username, userImg, img, climb, climbGrade, climbLocation, cl
 
     {session && (
       <form action="" className='flex items-center p-4' >
-        <ChatAlt2Icon disabled={!comment.trim()} onClick={sendComment} className='h-7 cursor-pointer' />
+        <ChatAlt2Icon disabled={!comment.trim()} className='h-7 cursor-pointer' />
         <input onChange={(e) => setComment(e.target.value) } type="text" value={comment} placeholder='Comment here' className='bg-green1 border-none flex-1 focus:ring-0 outline-none'/>
         <button type='submit' disabled={!comment.trim()} onClick={sendComment} className='font-semibold hidden  text-green3 cursor-pointer'>Post</button>
       </form>

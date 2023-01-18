@@ -166,7 +166,7 @@ function Header({posts,
                     >
                         Latest Ascents
                     </button>
-                        <ul class="dropdown-menu absolute text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none bg-gray-800"
+                        <ul class="dropdown-menu absolute text-base z-50 py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none bg-gray-800"
                             aria-labelledby="dropdownMenuButton2">
                             {posts?.map(item => (
                             <>
@@ -195,7 +195,7 @@ function Header({posts,
                     >
                         My Ascents
                     </button>
-                        <ul class="dropdown-menu min-w-max absolute text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none bg-gray-800  overflow-x-auto scrollbar scrollbar-none"
+                        <ul class="dropdown-menu min-w-max absolute text-base z-50 py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none bg-gray-800  overflow-x-auto scrollbar scrollbar-none"
                             aria-labelledby="dropdownMenuButton2">
                             {myPosts?.map(item => (
                             <>
@@ -214,7 +214,7 @@ function Header({posts,
                 
                 <div class="flex justify-center items-center">
                 <div>
-                    <MailOpenIcon onClick={() => setOpenMobileInbox(!openMobileInbox)} className='h-7 w-7' />
+                    <MailOpenIcon onClick={() => setOpenMobileInbox(!openMobileInbox)} className='h-7 w-7 md:inline-flex hover:scale-125 active:scale-110 transition-all duration-150 ease-out' />
                  </div>
                 </div>
                 
