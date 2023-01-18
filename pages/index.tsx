@@ -69,7 +69,7 @@ export default function Home() {
       }
 
   return (
-    <div className="bg-green1 h-screen overflow-y-scroll scrollbar-hide">
+    <div className="bg-green1 h-screen overflow-y-scroll scrollbar-hide overflow-x-hidden">
       <Head>
         <title>allez!</title>
         <link rel="icon" href="/favicon.ico" />
