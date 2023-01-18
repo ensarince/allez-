@@ -6,8 +6,7 @@ import dynamic from "next/dynamic"
 import React, {useEffect, useState} from 'react'
 import { db } from '../firebase'
 import { collection, onSnapshot, orderBy, query, where } from 'firebase/firestore'
-import { useRouter } from 'next/router'
-import {useSession, signIn, signOut} from "next-auth/react"
+import {useSession} from "next-auth/react"
 
 export default function Home() {
 
@@ -15,7 +14,6 @@ export default function Home() {
 
       //usesession from next-auth, rename data to session
       const { data: session } = useSession();
-      const router = useRouter()
   
       const [posts, setPosts] = useState([])
       const [myPosts, setMyPosts] = useState([])
@@ -41,17 +39,18 @@ export default function Home() {
       
       //getting my post data
       useEffect(() => {
-        try {                
-          //!fix any
-            const unsubscribe = onSnapshot(query(collection(db as any, 'users', session?.user?.email as any, 'climbs'), orderBy('timestamp', 'desc')), 
-            (snapshot: any) => {
-                setMyPosts(snapshot.docs)
-              });
-              return unsubscribe
-            } catch (error) {
-              console.log("My data fetch error ->> " , error)
-            }
-          }, [db])   
+          try {                
+            //!fix any
+              const unsubscribe = onSnapshot(query(collection(db, 'users', session?.user?.email!, 'climbs'), orderBy('timestamp', 'desc')), 
+              (snapshot: any) => {
+                  setMyPosts(snapshot.docs)
+                });
+                return unsubscribe
+              } catch (error) {
+                console.log("My data fetch error ->> " , error)
+              }
+          }, [db, session])   
+
           
     const handleSearch = async (e) => {
       e.preventDefault()
