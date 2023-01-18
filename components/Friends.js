@@ -21,7 +21,7 @@ function Friends() {
   }, []);
   
   return (
-    <div className='bg-green1 rounded-sm  p-5 my-4 overflow-y-scroll h-full scrollbar-thin scrollbar-thumb-green3'>
+    <div className='bg-green1 rounded-sm  p-5 my-4 overflow-y-scroll h-1/2 scrollbar-thin scrollbar-thumb-green3'>
       <div className='flex space-x-2 justify-center'>
         <h1 className='text-md lg:text-xl text-green3'>Friends</h1>
         <UserGroupIcon  className="h-8 cursor-pointer"/>
