@@ -13,8 +13,6 @@ function ChatInput({ session }) {
      and finally come with the up-to-date data. */
     const {data: messages, error, mutate} = useSWR("/api/getMessages", fetcher)
 
-    console.log(messages)
-
     const addMessage = async(e) => {
         e.preventDefault();
         if(!input) return;

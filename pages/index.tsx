@@ -37,6 +37,7 @@ export default function Home() {
         });
         return unsubscribe
       }, [db, search])   
+
       
       //getting my post data
       useEffect(() => {
@@ -47,11 +48,11 @@ export default function Home() {
                 setMyPosts(snapshot.docs)
               });
               return unsubscribe
-        } catch (error) {
-            console.log("My data fetch error ->> " , error)
-        }
-    }, [db])   
-
+            } catch (error) {
+              console.log("My data fetch error ->> " , error)
+            }
+          }, [db])   
+          
     const handleSearch = async (e) => {
       e.preventDefault()
       const filtered = posts.filter((item: any) => {
